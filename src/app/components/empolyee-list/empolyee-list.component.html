@@ -1,0 +1,33 @@
+<div class="container mt-4">
+  <h2>Employee Management</h2>
+
+  <table class="table table-bordered table-striped mt-3">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Department</th>
+        <th>Date of Hire</th>
+        <th>Salary ($)</th>
+        <th *ngIf="isAdmin">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of employees">
+        <td>{{ emp.eId }}</td>
+        <td>{{ emp.firstName }}</td>
+        <td>{{ emp.lastName }}</td>
+        <td>{{ emp.department }}</td>
+        <td>{{ emp.dateOfHire }}</td>
+        <td>{{ emp.salary | number }}</td>
+        <td *ngIf="isAdmin">
+          <button class="btn btn-danger btn-sm" (click)="onDelete(emp.eId)">Delete</button>
+        </td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="onAdd(emp)">Add Emp</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
